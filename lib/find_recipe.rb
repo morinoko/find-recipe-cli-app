@@ -1,5 +1,4 @@
-require "find_recipe/version"
+# Loads the needed files
 
-module FindRecipe
-  # Your code goes here...
-end
+require_relative "find_recipe/version"
+require_relative "find_recipe/cli"
