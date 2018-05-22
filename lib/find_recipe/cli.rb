@@ -12,12 +12,10 @@ class FindRecipe::CLI
 		puts "1. See trending recipes"
 		puts "2. Search for a recipe"
 		puts ""
+		puts "Enter 1 or 2"
 		
-		input = nil 
-		
-		puts "Enter 1 or 2, or exit"
 		input = gets.strip.downcase
-
+		
 		if input == "1"
 			trending_recipes
 		elsif input == "2"
@@ -55,10 +53,9 @@ class FindRecipe::CLI
 				trending_recipes
 			elsif input == "restart"
 				search_options
-			elsif input == "exit"
-				exit
 			end
 		end
+		exit
 	end
 	
 	def get_recipe_from_number(number)
@@ -71,6 +68,8 @@ class FindRecipe::CLI
 		input = gets.strip.downcase
 		
 		puts "#{input} Recipes:"
+		
+		exit
 	end
 	
 	def exit
