@@ -1,4 +1,4 @@
-# CLI Controller
+# This Class acts as the CLI Controller
 class FindRecipe::CLI
 	
 	def call
@@ -12,7 +12,7 @@ class FindRecipe::CLI
 		puts "1. See trending recipes"
 		puts "2. Search for a recipe"
 		puts ""
-		puts "Enter 1 or 2"
+		puts "Enter 1 or 2, or exit"
 		
 		input = gets.strip.downcase
 		
@@ -20,7 +20,13 @@ class FindRecipe::CLI
 			trending_recipes
 		elsif input == "2"
 			search_recipe
+		elsif input == "exit"
+		  exit
+		else
+			puts "Not sure what you mean..."
+			search_options
 		end
+
 	end
 	
 	def trending_recipes
@@ -55,6 +61,7 @@ class FindRecipe::CLI
 				search_options
 			end
 		end
+		
 		exit
 	end
 	
