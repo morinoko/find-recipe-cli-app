@@ -30,17 +30,19 @@ class FindRecipe::CLI
 	end
 	
 	def trending_recipes
-		puts "1. Khaman dhokla"
-		puts "2. Low carb Courgette fritters"
-		puts "3. Bacon, Leek and Potato Soup"
-		puts ""
+		@trending_recipes = FindRecipe::Recipe.trending
 		
+		@trending_recipes.each.with_index( 1 ) do |recipe, index|
+			puts "#{index}. #{recipe.name}"
+		end
+		
+		puts ""
 		puts "Choose a recipe number or type 'back'"
 		
 		input = gets.strip.downcase
 
-		if input.to_i > 0 && input.to_i <= 3
-			get_recipe_from_number( input.to_i )
+		if input.to_i > 0 && input.to_i <= @trending_recipes.count
+			get_recipe_from_number( input.to_i - 1 )
 		elsif input == "back"
 			search_options
 		else
@@ -50,6 +52,7 @@ class FindRecipe::CLI
 		end
 		
 		input = nil
+		
 		while input != "exit"
 			puts "Do you want to see the list again, restart, or exit?"
 			puts "Enter list, restart, or exit"	
@@ -65,8 +68,12 @@ class FindRecipe::CLI
 		exit
 	end
 	
-	def get_recipe_from_number(number)
-		puts "Recipe #{number}"
+	def get_recipe_from_number( number )
+		recipe = @trending_recipes[ number ]
+		puts "Details for #{recipe.name}:"
+		puts "Description"
+		puts "Ingredients"
+		puts "Step"
 	end
 	
 	def search_recipe
@@ -74,7 +81,11 @@ class FindRecipe::CLI
 		
 		input = gets.strip.downcase
 		
-		puts "#{input} Recipes:"
+		@search_recipes = FindRecipe::Recipe.get_recipes_from_keyword( input )
+		puts "Results for #{input}:"
+		@search_recipes.each.with_index( 1 ) do |recipe, index|
+			puts "#{index} #{recipe.name}"
+		end
 		
 		exit
 	end
