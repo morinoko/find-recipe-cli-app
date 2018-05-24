@@ -9,7 +9,8 @@ class FindRecipe::Recipe
 	end
 	
 	# Create recipes based off an array of recipe data hashes output by the scraper
-	def self.trending( recipe_array )
+	def self.trending
+		recipe_array = FindRecipe::Scraper.scrape_trending_recipes_page
 		trending_recipes = recipe_array.collect do |recipe|
 			self.new( recipe )
 		end
