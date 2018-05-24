@@ -5,3 +5,4 @@ module FindRecipe
 end
 
 require_relative "find_recipe/cli"
+require_relative "find_recipe/recipe"
