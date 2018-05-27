@@ -9,14 +9,18 @@ class FindRecipe::Recipe
 	end
 	
 	# Create recipes based off an array of recipe data hashes output by the scraper
-	def self.create_trending_recipes
-		recipe_array = FindRecipe::Scraper.scrape_trending_recipes_page
+	def self.create_recipes( keyword = nil )
+		if keyword
+			recipe_array = FindRecipe::Scraper.scrape_search_page( keyword )
+		else
+			recipe_array = FindRecipe::Scraper.scrape_trending_recipes_page
+		end
 		
-		trending_recipes = recipe_array.collect do |recipe|
+		recipes = recipe_array.collect do |recipe|
 			self.new( recipe )
 		end
 		
-		trending_recipes.each do |recipe|
+		recipes.each do |recipe|
 			additional_recipe_data = FindRecipe::Scraper.scrape_individual_recipe_data( recipe.url )
 			recipe.add_additional_recipe_data( additional_recipe_data )
 		end
@@ -29,9 +33,18 @@ class FindRecipe::Recipe
 		self
 	end
 	
-	# Create recipes from a search page based on the input word 
-	def self.get_recipes_from_keyword( keyword )
-		
+	def get_details
+		puts "Details for #{@name}:"
+		puts "Description:"
+		puts @description
+		puts "Ingredients:"
+		@ingredients.each do |ingredient|
+			puts ingredient
+		end
+		puts "Steps:"
+		@steps.each.with_index( 1 ) do |step, step_number|
+			puts "#{step_number}. #{step}"
+		end
 	end
 	
 	

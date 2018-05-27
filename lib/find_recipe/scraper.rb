@@ -2,8 +2,6 @@ class FindRecipe::Scraper
 	ROOT_URL = "https://cookpad.com"
 	
 	def self.scrape_trending_recipes_page
-		recipes = []
-		
 		recipe_page = self.get_trending_recipes_page
 		
 		recipe_cards = recipe_page.css( ".card.feed__card" )
@@ -11,6 +9,18 @@ class FindRecipe::Scraper
 				recipe = {
 					name: card.css( "h2.recipe-title" ).text.strip,
 					url: ROOT_URL + card.css( "a.link-unstyled" ).attribute( "href" ).value
+				}
+		end
+	end
+	
+	def self.scrape_search_page( keyword )
+		recipe_page = self.get_recipe_page_from_keyword( keyword )
+		
+		recipe_cards = recipe_page.css( "li.wide-card" )
+		recipe_cards.collect do |card|
+				recipe = {
+					name: card.css( "h2.recipe-title span" ).text.strip,
+					url: ROOT_URL + card.css( "a.media" ).attribute( "href" ).value
 				}
 		end
 	end
@@ -34,6 +44,11 @@ class FindRecipe::Scraper
 		url = ROOT_URL + "/uk/trending"
 		Nokogiri::HTML( open( url ) )
 	end
+	
+	def self.get_recipe_page_from_keyword( keyword )
+		url = ROOT_URL + "/uk/search/#{keyword}"
+		Nokogiri::HTML( open( url ) )
+	end	
 	
 	def self.get_individual_recipe_page( recipe_url )
 		Nokogiri::HTML( open( recipe_url ))
