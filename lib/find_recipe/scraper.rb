@@ -29,28 +29,32 @@ class FindRecipe::Scraper
 		recipe_data = {}
 
 		recipe_page = self.get_individual_recipe_page( recipe_url )
-		recipe_data[:description] = recipe_page.at("meta[itemprop='description']")['content']
+		recipe_data[:description] = recipe_page.at( "meta[itemprop='description']" )['content']
 		
 		# Gets ingredients as an array of each ingredient
 		recipe_data[:ingredients] = recipe_page.css( ".ingredient__details" ).collect{ |ingredient| ingredient.text.strip }
 		
 		# Gets steps as an array of each step
-		recipe_data[:steps] = recipe_page.css(".step .prose").collect{ |step| step.text.strip }
+		recipe_data[:steps] = recipe_page.css( ".step .prose" ).collect{ |step| step.text.strip }
 
 		recipe_data
 	end
 	
 	def self.get_trending_recipes_page
 		url = ROOT_URL + "/uk/trending"
-		Nokogiri::HTML( open( url ) )
+		open_url( url )
 	end
 	
 	def self.get_recipe_page_from_keyword( keyword )
 		url = ROOT_URL + "/uk/search/#{keyword}"
-		Nokogiri::HTML( open( url ) )
+		open_url( url )
 	end	
 	
 	def self.get_individual_recipe_page( recipe_url )
-		Nokogiri::HTML( open( recipe_url ))
+		open_url( recipe_url )
+	end
+	
+	def self.open_url( url )
+		Nokogiri::HTML( open( url ) )
 	end
 end
