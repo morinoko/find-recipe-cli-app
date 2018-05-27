@@ -1,6 +1,9 @@
 CLI Planning Notes
 
-User types "find-recipe"
+These are the original notes outlining the functionality/specs of this app. 
+
+
+User types "find-recipe" in the command line
 
 Ask how the user wants to see the recipes:
 
