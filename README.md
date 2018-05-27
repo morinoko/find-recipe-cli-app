@@ -1,6 +1,6 @@
 # FindRecipe
 
-The goal of this little CLI app is to help you get some cooking inspiration directly from your command line! Find a recipe by checking out trending recipes or search with a keyword.
+This CLI gem helps you get some cooking inspiration directly from your command line! Find a recipe by looking at a list of trending recipes from Cookpad or search with a keyword such as a dish name or ingredient name.
 
 ## Installation
 
@@ -24,6 +24,7 @@ Type the below and follow the on screen prompts.
 
     $ find-recipe
 
+You will be asked whether you want to see the trending recipes list or whether you want to search with a keyword. If you choose to search, enter a dish name or ingredient name to see a list of recipes based on your input.
 
 ## Development
 
@@ -33,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/morinoko/find_recipe. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/morinoko/find_recipe. Or if you have some feature ideas, let me know and I'll see what I can do :) This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
