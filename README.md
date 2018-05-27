@@ -1,10 +1,6 @@
 # FindRecipe
 
-The goal of this little CLI app is to help you get some cooking inspiration! Find a recipe by checking out trending recipes or search with a keyword.
-
-In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/find_recipe`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The goal of this little CLI app is to help you get some cooking inspiration directly from your command line! Find a recipe by checking out trending recipes or search with a keyword.
 
 ## Installation
 
@@ -24,7 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+    $ find-recipe
+
 
 ## Development
 
