@@ -34,17 +34,22 @@ class FindRecipe::Recipe
 	end
 	
 	def get_details
+		puts "\n\n"
 		puts "Details for #{@name}:"
+		puts "\n\n"
 		puts "Description:"
 		puts @description
+		puts "\n\n"
 		puts "Ingredients:"
 		@ingredients.each do |ingredient|
 			puts ingredient
 		end
+		puts "\n\n"
 		puts "Steps:"
 		@steps.each.with_index( 1 ) do |step, step_number|
 			puts "#{step_number}. #{step}"
 		end
+		puts "\n\n"
 	end
 	
 	

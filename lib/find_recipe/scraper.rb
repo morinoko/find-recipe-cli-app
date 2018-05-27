@@ -10,7 +10,7 @@ class FindRecipe::Scraper
 					name: card.css( "h2.recipe-title" ).text.strip,
 					url: ROOT_URL + card.css( "a.link-unstyled" ).attribute( "href" ).value
 				}
-		end
+		end.uniq
 	end
 	
 	def self.scrape_search_page( keyword )
