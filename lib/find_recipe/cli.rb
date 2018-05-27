@@ -7,22 +7,27 @@ class FindRecipe::CLI
 	
 	def search_options
 		puts ""
+		puts "Welcome!".red
 		puts "How do you want to get started?"
 		puts ""
-		puts "1. See trending recipes"
-		puts "2. Search for a recipe"
+		puts "1.".blue + " See trending recipes"
+		puts "2.".blue + " Search for a recipe"
 		puts ""
 		puts "Enter 1 or 2, or exit"
 		
 		input = gets.strip.downcase
 		
 		if input == "1"
+			
+			# Scrapes recipes only once to save loading time
 			if !@trending_recipes
 				puts "Please wait a moment for the recipes to be loaded..."
 				@trending_recipes = FindRecipe::Recipe.create_recipes
 			end
 			trending_recipes
 		elsif input == "2"
+		
+			# Scrape recipes only if a search hasn't been done yet or if user restarts
 			if !@searched_recipes || @searched_recipes.length == 0
 				puts "What is the dish or ingredient you want to search for?"
 				input = gets.strip.downcase
@@ -43,9 +48,8 @@ class FindRecipe::CLI
 	
 	def trending_recipes
 		puts "\n\n"
-		
 		@trending_recipes.each.with_index( 1 ) do |recipe, index|
-			puts "#{index}. #{recipe.name}"
+			puts "#{index}.".green + " #{recipe.name}"
 		end
 		
 		puts ""
@@ -79,10 +83,10 @@ class FindRecipe::CLI
 		
 	def choose_searched_recipes
 		puts "\n\n"
-		puts "Search Results:"
+		puts "Search Results:".yellow
 		puts ""
 		@searched_recipes.each.with_index( 1 ) do |recipe, index|
-			puts "#{index} #{recipe.name}"
+			puts "#{index}.".green + " #{recipe.name}"
 		end
 		
 		puts ""

@@ -1,6 +1,7 @@
 # Loads the needed files. This could be moved into a config/environment.rb file later?
 require 'open-uri'
 require 'nokogiri'
+require 'colorize'
 require 'pry'
 
 require_relative "find_recipe/version"
