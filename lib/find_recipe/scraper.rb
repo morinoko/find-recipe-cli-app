@@ -9,8 +9,8 @@ class FindRecipe::Scraper
 		recipe_cards = recipe_page.css( ".card.feed__card" )
 		recipe_cards.collect do |card|
 				recipe = {
-					recipe_name: card.css( "h2.recipe-title" ).text.strip,
-					recipe_url: ROOT_URL + card.css( "a.link-unstyled" ).attribute( "href" ).value
+					name: card.css( "h2.recipe-title" ).text.strip,
+					url: ROOT_URL + card.css( "a.link-unstyled" ).attribute( "href" ).value
 				}
 		end
 	end

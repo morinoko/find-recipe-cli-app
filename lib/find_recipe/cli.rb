@@ -30,7 +30,7 @@ class FindRecipe::CLI
 	end
 	
 	def trending_recipes
-		@trending_recipes = FindRecipe::Recipe.trending
+		@trending_recipes = FindRecipe::Recipe.create_trending_recipes
 		
 		@trending_recipes.each.with_index( 1 ) do |recipe, index|
 			puts "#{index}. #{recipe.name}"
@@ -71,9 +71,16 @@ class FindRecipe::CLI
 	def get_recipe_from_number( number )
 		recipe = @trending_recipes[ number ]
 		puts "Details for #{recipe.name}:"
-		puts "Description"
-		puts "Ingredients"
-		puts "Step"
+		puts "Description:"
+		puts recipe.description
+		puts "Ingredients:"
+		recipe.ingredients.each do |ingredient|
+			puts ingredient
+		end
+		puts "Steps:"
+		recipe.steps.each.with_index( 1 ) do |step, step_number|
+			puts "#{step_number} #{step}"
+		end
 	end
 	
 	def search_recipe
