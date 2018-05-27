@@ -5,7 +5,6 @@ RSpec.describe FindRecipe do
     expect(FindRecipe::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
-  end
+  #TODO: Add app specs at a later time
+  
 end
