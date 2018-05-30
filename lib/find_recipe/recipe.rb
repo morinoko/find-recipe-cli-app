@@ -36,4 +36,8 @@ class FindRecipe::Recipe
 		end
 		puts "\n\n"
 	end
+	
+	def open_in_browser
+		system("open", self.url)
+	end
 end

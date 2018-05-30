@@ -57,13 +57,22 @@ class FindRecipe::CLI
 		input = gets.strip.downcase
 
 		if input.to_i > 0 && input.to_i <= FindRecipe::Recipe::TrendingRecipe.all.count
-			FindRecipe::Recipe::TrendingRecipe.all[ input.to_i - 1 ].get_details
+			chosen_recipe = FindRecipe::Recipe::TrendingRecipe.all[ input.to_i - 1 ]
+			chosen_recipe.get_details
 		elsif input == "back"
 			search_options
 		else
 		 puts "Not sure what you mean..."
 		 puts ""
 		 trending_recipes
+		end
+		
+		puts "Open in browser? (y/n)"
+		
+		input = gets.strip.downcase
+		
+		if input == "y"
+			chosen_recipe.open_in_browser
 		end
 		
 		puts "Do you want to see the list again, restart, or exit?"
@@ -93,7 +102,8 @@ class FindRecipe::CLI
 		input = gets.strip.downcase
 
 		if input.to_i > 0 && input.to_i <= FindRecipe::Recipe::SearchedRecipe.all.count
-			FindRecipe::Recipe::SearchedRecipe.all[ input.to_i - 1 ].get_details
+			chosen_recipe = FindRecipe::Recipe::SearchedRecipe.all[ input.to_i - 1 ]
+			chosen_recipe.get_details
 		elsif input == "restart"
 			FindRecipe::Recipe::SearchedRecipe.reset
 			search_options
@@ -101,7 +111,15 @@ class FindRecipe::CLI
 			puts "Not sure what you mean..."
 			choose_searched_recipes
 		end
-
+		
+		puts "Open in browser? (y/n)"
+		
+		input = gets.strip.downcase
+		
+		if input == "y"
+			chosen_recipe.open_in_browser
+		end
+		
 		puts "Do you want to see the list again, restart, or exit?"
 		puts "Enter list, restart, or exit"	
 		input = gets.strip.downcase
