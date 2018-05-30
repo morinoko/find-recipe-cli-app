@@ -34,6 +34,7 @@ class FindRecipe::Recipe
 		self
 	end
 	
+	
 	def get_details
 		puts "\n\n"
 		puts "Details for #{@name}:"
@@ -52,6 +53,4 @@ class FindRecipe::Recipe
 		end
 		puts "\n\n"
 	end
-	
-	
 end

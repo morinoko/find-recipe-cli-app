@@ -43,7 +43,6 @@ class FindRecipe::CLI
 			puts "Not sure what you mean..."
 			search_options
 		end
-
 	end
 	
 	def trending_recipes
@@ -78,7 +77,6 @@ class FindRecipe::CLI
 		elsif input == "exit"
 			exit_program
 		end
-
 	end
 		
 	def choose_searched_recipes
@@ -116,12 +114,10 @@ class FindRecipe::CLI
 		elsif input == "exit"
 			exit_program
 		end
-		
 	end
 	
 	def exit_program
 		puts "See you next time!"
 		exit
 	end
-	
 end
