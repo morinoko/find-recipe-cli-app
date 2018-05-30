@@ -7,26 +7,7 @@ class FindRecipe::Recipe
 			self.send( ("#{attribute}=" ), value)
 		end
 	end
-	
-	# Create recipes based off an array of recipe data hashes output by the scraper
-	def self.create_recipes( keyword = nil )
-		if keyword
-			recipe_array = FindRecipe::Scraper.scrape_search_page( keyword )
-		else
-			recipe_array = FindRecipe::Scraper.scrape_trending_recipes_page
-		end
 		
-		recipes = recipe_array.collect do |recipe|
-			self.new( recipe )
-		end
-		
-		# Add remaining attributes from each individual recipe page
-		recipes.each do |recipe|
-			additional_recipe_data = FindRecipe::Scraper.scrape_individual_recipe_data( recipe.url )
-			recipe.add_additional_recipe_data( additional_recipe_data )
-		end
-	end
-	
 	def add_additional_recipe_data( data_hash )
 		data_hash.each do |attribute, value|
 			self.send( ("#{attribute}="), value )
