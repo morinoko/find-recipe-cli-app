@@ -12,8 +12,7 @@ class FindRecipe::Recipe::SearchedRecipe < FindRecipe::Recipe
 		
 		# Add remaining attributes from each individual recipe page
 		recipes.each do |recipe|
-			additional_recipe_data = FindRecipe::Scraper.scrape_individual_recipe_data( recipe.url )
-			recipe.add_additional_recipe_data( additional_recipe_data )
+			recipe.add_additional_recipe_data
 			@@all << recipe
 		end
 	end

@@ -7,14 +7,16 @@ class FindRecipe::Recipe
 			self.send( ("#{attribute}=" ), value)
 		end
 	end
+	
+	def add_additional_recipe_data
+		additional_recipe_data = FindRecipe::Scraper.scrape_individual_recipe_data( self.url )
 		
-	def add_additional_recipe_data( data_hash )
-		data_hash.each do |attribute, value|
+		additional_recipe_data.each do |attribute, value|
 			self.send( ("#{attribute}="), value )
 		end
+		
 		self
 	end
-	
 	
 	def get_details
 		puts "\n\n"
