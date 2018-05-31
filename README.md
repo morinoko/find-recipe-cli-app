@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/find_recipe.svg)](https://badge.fury.io/rb/find_recipe)
+
 # FindRecipe
 
 This CLI gem helps you get some cooking inspiration directly from your command line! Find a recipe by looking at a list of trending recipes from Cookpad or search with a keyword such as a dish name or ingredient name. If you find a recipe that looks good, open it in the browser so you can see the photos or print.
