@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/find_recipe.svg)](https://badge.fury.io/rb/find_recipe)
+[![Gem Version](https://badge.fury.io/rb/find_recipe.svg)](https://rubygems.org/gems/find_recipe)
 
 # FindRecipe
 
