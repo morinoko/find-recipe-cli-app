@@ -1,6 +1,5 @@
 # This Class acts as the CLI Controller
 class FindRecipe::CLI
-	
 	def call
 		search_options
 	end
@@ -34,7 +33,7 @@ class FindRecipe::CLI
 				puts "Please wait a moment for the recipes to be loaded..."
 				
 				# If search keyword has spaces, it's necessary to replace them with %20 so the URL works
-				FindRecipe::Recipe::SearchedRecipe.create_recipes( input.gsub( " ", "%20" ) )
+				FindRecipe::Recipe::SearchedRecipe.create_recipes(input.gsub(" ", "%20"))
 			end
 			choose_searched_recipes
 		elsif input == "exit"
@@ -47,7 +46,7 @@ class FindRecipe::CLI
 	
 	def trending_recipes
 		puts "\n\n"
-		FindRecipe::Recipe::TrendingRecipe.all.each.with_index( 1 ) do |recipe, index|
+		FindRecipe::Recipe::TrendingRecipe.all.each.with_index(1) do |recipe, index|
 			puts "#{index}.".green + " #{recipe.name}"
 		end
 		
@@ -56,8 +55,8 @@ class FindRecipe::CLI
 		
 		input = gets.strip.downcase
 
-		if input.to_i > 0 && input.to_i <= FindRecipe::Recipe::TrendingRecipe.all.count
-			chosen_recipe = FindRecipe::Recipe::TrendingRecipe.all[ input.to_i - 1 ]
+		if input.to_i > 0 && input.to_i <= FindRecipe::Recipe::TrendingRecipe.all.size
+			chosen_recipe = FindRecipe::Recipe::TrendingRecipe.all[input.to_i - 1]
 			chosen_recipe.get_details
 		elsif input == "back"
 			search_options
@@ -92,7 +91,7 @@ class FindRecipe::CLI
 		puts "\n\n"
 		puts "Search Results:".yellow
 		puts ""
-		FindRecipe::Recipe::SearchedRecipe.all.each.with_index( 1 ) do |recipe, index|
+		FindRecipe::Recipe::SearchedRecipe.all.each.with_index(1) do |recipe, index|
 			puts "#{index}.".green + " #{recipe.name}"
 		end
 		
@@ -101,8 +100,8 @@ class FindRecipe::CLI
 		
 		input = gets.strip.downcase
 
-		if input.to_i > 0 && input.to_i <= FindRecipe::Recipe::SearchedRecipe.all.count
-			chosen_recipe = FindRecipe::Recipe::SearchedRecipe.all[ input.to_i - 1 ]
+		if input.to_i > 0 && input.to_i <= FindRecipe::Recipe::SearchedRecipe.all.size
+			chosen_recipe = FindRecipe::Recipe::SearchedRecipe.all[input.to_i - 1]
 			chosen_recipe.get_details
 		elsif input == "restart"
 			FindRecipe::Recipe::SearchedRecipe.reset
