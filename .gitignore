@@ -8,6 +8,9 @@
 /spec/reports/
 /tmp/
 
+# Leave out planning notes
+planning_notes.md
+
 # Don't commit gems generated from the source code
 *.gem
 
